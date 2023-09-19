@@ -1,0 +1,28 @@
+from PIL import Image
+
+# Open the two photographs
+photo1 = Image.open("ronaldo.jpg")
+photo2 = Image.open("messi.jpeg")
+
+# Assuming you've already cropped a face from photo1 and saved it as "face.jpg"
+face = Image.open("ronaldo.jpg")
+
+# Calculate the position to paste the face onto photo2
+x_position = 50 # Adjust this as needed
+y_position = 10  # Adjust this as needed
+
+# Resize the face to fit the desired position
+face = face.resize((100, 100))  # Adjust the size as needed
+
+# Paste the face onto photo2
+photo2.paste(face, (x_position, y_position))
+
+# Display or save the resulting image
+photo2.show()  # Display the image
+# To save the resulting image:
+# photo2.save("result.jpg")
+
+# Close the images
+photo1.close()
+photo2.close()
+face.close()
