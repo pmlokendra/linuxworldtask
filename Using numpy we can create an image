@@ -1,0 +1,34 @@
+import numpy as np
+import matplotlib.pyplot as plt
+# Define the dimensions of the image
+width = 800
+height = 600
+
+# Create an empty image (black background)
+image = np.zeros((height, width, 3), dtype=np.uint8)
+
+# Fill the image with colors for flowers and houses
+# For example, you can draw a red house and yellow flowers
+house_color = (255, 0, 0)  # Red color
+flower_color = (255, 255, 0)  # Yellow color
+
+# Draw a house
+house_x = 300
+house_y = 400
+house_width = 200
+house_height = 200
+image[house_y:house_y + house_height, house_x:house_x + house_width] = house_color
+
+# Draw some flowers
+flower1_x = 100
+flower1_y = 200
+image[flower1_y:flower1_y + 20, flower1_x:flower1_x + 20] = flower_color
+
+flower2_x = 500
+flower2_y = 250
+image[flower2_y:flower2_y + 20, flower2_x:flower2_x + 20] = flower_color
+
+# Display the image
+plt.imshow(image)
+plt.axis('off')  # Turn off axis labels and ticks
+plt.show()
