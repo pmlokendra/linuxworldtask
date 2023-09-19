@@ -1,0 +1,3 @@
+pip install pywhatkit
+import pywhatkit as pyk
+pyk.send_mail("yourmailid..@gmail.com" , "Enter Your Email API Key" , "testing" , "type message", "receiversmailid..@gmail.com")
