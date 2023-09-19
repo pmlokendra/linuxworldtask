@@ -1,0 +1,56 @@
+import pywhatkit
+import smtplib
+import requests
+import cv2
+
+def send_whatsapp_message(phone_number, message):
+    
+    pywhatkit.sendwhatmsg_instantly(phone_number, message)
+
+def send_email(email_address, subject, message):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('your_email_address', 'your_password')
+    server.sendmail('your_email_address', email_address, f'Subject: {subject}\n\n{message}')
+    server.quit()
+    
+def get_click_photo():
+    cap = cv2.VideoCapture(0)
+    status  , get_click_photo   = cap.read()
+    cv2.imshow("My photo", get_click_photo)
+    cv2.waitKey()
+    cap.release()
+    cv2.destroyAllWindows()
+
+def main():
+    print('Welcome to the Python menu!')
+    print('1. Send a WhatsApp message')
+    print('2. Send an email')
+    print('3. Get a click photo')
+    print('4. Quit')
+
+    choice = input('What would you like to do? ')
+
+    if choice == '1':
+        phone_number = input('Enter the phone number: ')
+        message = input('Enter the message: ')
+        send_whatsapp_message(phone_number, message)
+    elif choice == '2':
+        email_address = input('Enter the email address: ')
+        subject = input('Enter the subject: ')
+        message = input('Enter the message: ')
+        send_email(email_address, subject, message)
+    elif choice == '3':
+        click_photo = get_click_photo()
+        if click_photo:
+            print(click_photo)
+        else:
+            print('No click photo found.')
+    elif choice == '4':
+        print('Goodbye!')
+    else:
+        print('Invalid choice.')
+
+if __name__ == '__main__':
+    main()
