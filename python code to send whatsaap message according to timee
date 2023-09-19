@@ -1,0 +1,7 @@
+# to send whatsaap message according to time 
+import pywhatkit
+
+
+pywhatkit.sendwhatmsg("+91mobilenumber",
+					"hello bhaiya!",
+					11, 53)
